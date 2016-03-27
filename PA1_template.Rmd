@@ -36,7 +36,7 @@ head(agg_data_day)
 
 **Median** of the total number of steps is **`r median`** and **mean** is **`r mean`**. The following histogram shows the frequency of total steps per day over the considered period:
 
-```{r, fig.height = 4}
+```{r hist_steps_day, fig.height = 4}
 hist(agg_data_day$steps_per_day, breaks = 10, main = "Histogram of steps per day", 
      xlab = "Total number of steps per day")
 
@@ -47,7 +47,7 @@ hist(agg_data_day$steps_per_day, breaks = 10, main = "Histogram of steps per day
 
 Reaggregate the data to get the average number of steps per time interval:
 
-```{r}
+```{r plot_steps_interval}
 agg_data_timestep <- activity_data[,list(avg_steps_per_time = mean(steps, na.rm = TRUE)), by=interval]
 plot(agg_data_timestep$interval, agg_data_timestep$avg_steps_per_time, type = "l",
      xlab = "Interval of day", ylab = "Mean number of steps", 
@@ -86,7 +86,7 @@ The **median** of the cleaned steps per day is now **`r median_cleaned`** and th
 Apparently, the pre-processing by imputing missing values has a significant impact on the estimates of total daily
 number of steps as this histogram shows in comparison to the one above:
 
-```{r}
+```{r hist_steps_day_cleaned}
 hist(agg_data_day_cleaned$steps_per_day, breaks = 10, main = "Histogram of steps per day",
      xlab = "Total number of steps per day")
 ```
@@ -100,7 +100,7 @@ activity_data_cleaned <- activity_data_cleaned[,day_type:=as.factor(ifelse(weekd
 head(activity_data_cleaned)
 ```
 
-```{r}
+```{r plot_steps_interval_day_type}
 library(ggplot2)
 agg_data_timestep_daytype <- activity_data_cleaned[,list(avg_steps_per_time = mean(steps_cleaned, na.rm = TRUE)), by=list(interval, day_type)]
 g <- ggplot(agg_data_timestep_daytype, aes(interval, avg_steps_per_time)) +

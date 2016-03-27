@@ -59,7 +59,7 @@ hist(agg_data_day$steps_per_day, breaks = 10, main = "Histogram of steps per day
      xlab = "Total number of steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)\
+![](PA1_template_files/figure-html/hist_steps_day-1.png)\
 
 
 ## What is the average daily activity pattern?
@@ -74,7 +74,7 @@ plot(agg_data_timestep$interval, agg_data_timestep$avg_steps_per_time, type = "l
      main = "Average of steps per time interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)\
+![](PA1_template_files/figure-html/plot_steps_interval-1.png)\
 
 ```r
 agg_data_timestep <- agg_data_timestep[order(-avg_steps_per_time)]
@@ -137,7 +137,7 @@ hist(agg_data_day_cleaned$steps_per_day, breaks = 10, main = "Histogram of steps
      xlab = "Total number of steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)\
+![](PA1_template_files/figure-html/hist_steps_day_cleaned-1.png)\
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -170,6 +170,6 @@ g <- ggplot(agg_data_timestep_daytype, aes(interval, avg_steps_per_time)) +
 g
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)\
+![](PA1_template_files/figure-html/plot_steps_interval_day_type-1.png)\
 
 Obviously, activity patterns differ depending on whether a weekday or weekend is considered. 
